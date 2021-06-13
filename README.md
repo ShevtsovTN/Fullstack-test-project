@@ -7,6 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+1. Clone this repository for yourself, create and configure the `.env` file
+2. Run the commands:
+`composer install` then` npm install`.
+3. Run the command `npm run build`.
+4. To load test data into the database, run the commands `php artisan migrate` and` php artisan db: seed`.
+5. Run the project `php artisan serve`.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
