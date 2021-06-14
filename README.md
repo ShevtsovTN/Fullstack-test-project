@@ -7,6 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+Test:
+Implement a CRUD system of comments to posts in the Laravel + Vue technology stack, design as a Single Page Application
+
 1. Clone this repository for yourself, create and configure the `.env` file
 2. Run the commands:
 `composer install` then` npm install`.
