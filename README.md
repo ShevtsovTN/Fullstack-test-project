@@ -9,11 +9,12 @@
 
 Test:
 Implement a CRUD system of comments to posts in the Laravel + Vue technology stack, design as a Single Page Application
+https://gitlab.com/smandpartners-tests/fullstack-test.t1/-/blob/main/README.md
 
-1. Clone this repository for yourself, create and configure the `.env` file
+1. Clone this repository for yourself, create and configure the `.env` file, run the commands:`php artisan key:generate`
 2. Run the commands:
 `composer install` then` npm install`.
-3. Run the command `npm run build`.
+3. Run the command `npm run dev`.
 4. To load test data into the database, run the commands `php artisan migrate` and` php artisan db: seed`.
 5. Run the project `php artisan serve`.
 
