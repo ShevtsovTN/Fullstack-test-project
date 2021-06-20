@@ -2,18 +2,24 @@
   <div class="container">
       <b-form @submit.prevent="onSubmit" @reset="onReset">
         <b-form-input
-          v-model="text"
+          v-model.trim="text"
+          @blur="isBlurInput"
           type="text"
-          placeholder="Enter your comment"
           @focus="isFocusedInput"
           id="commentForm"
-          class="mb-3"
+          class="mb-2"
+          :class="{'is-invalid': $v.text.$error}"
         ></b-form-input>
+        <div class="invalid-feedback mb-3" v-if="!$v.text.required || !$v.text.alphaNum">Field is invalid</div>
         <div
           v-if="isFocused"
-          class="d-flex align-items-center"
+          class="d-flex align-items-center mt-3"
         >
-          <b-button type="submit" variant="btn btn-primary">Submit</b-button>
+          <b-button
+            type="submit"
+            variant="btn btn-primary"
+            :disabled="$v.$invalid"
+          >Submit</b-button>
           <b-button type="reset" variant="btn btn-outline-dark ml-3">Cancel</b-button>
         </div>
       </b-form>
@@ -21,6 +27,8 @@
 </template>
 
 <script>
+  import { alphaNum, required } from 'vuelidate/lib/validators'
+
   export default {
     name: 'InputForm',
     data() {
@@ -29,13 +37,25 @@
         text: '',
         modalMessage: '',
         modalAction: {},
-        comment_id: null
+        comment_id: null,
+        placeholder: 'Enter your comment'
       }
     },
     props: ['updatebleComment'],
+    validations: {
+      text: {
+        alphaNum,
+        required
+      }
+    },
     methods: {
       isFocusedInput: function () {
+        document.querySelector('#commentForm').removeAttribute('placeholder')
         this.isFocused = true
+      },
+      isBlurInput: function () {
+        this.$v.text.$touch()
+        document.querySelector('#commentForm').setAttribute('placeholder', this.placeholder)
       },
       onSubmit: function () {
         const options = {
@@ -66,12 +86,15 @@
         this.isFocused = false
       }
     },
+    mounted() {
+      document.querySelector('#commentForm').setAttribute('placeholder', this.placeholder)
+    },
     watch: {
       updatebleComment: function (val, oldVal) {
         this.text = val.content
         this.comment_id = val.id
         this.isFocused = true
-      }
+      },
     },
   }
 </script>

@@ -45,7 +45,7 @@ class CommentController extends Controller
                 'updated_at' => $updated_at,
             ], 200);
         } else {
-            return response('Comment has not been added', 404);
+            return response('Comment has not been added', 400);
         }
     }
 
@@ -77,7 +77,7 @@ class CommentController extends Controller
                 'updated_at' => $updated_at,
             ], 200);
         } else {
-            return response('Comment has not been updated', 404);
+            return response('Comment has not been updated', 400);
         }
     }
 
@@ -94,7 +94,7 @@ class CommentController extends Controller
         if (Comment::where('id', $id)->doesntExist()) {
             return response('Comment has been deleted', 200);
         } else {
-            return response('Comment has not been deleted', 404);
+            return response('Comment has not been deleted', 400);
         }
     }
 }

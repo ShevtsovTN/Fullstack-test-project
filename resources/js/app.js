@@ -9,6 +9,7 @@ require('./bootstrap')
 window.Vue = require('vue').default
 import App from './components/App.vue'
 import VueRouter from 'vue-router'
+import Vuelidate from 'vuelidate'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import store from './store/index'
 import router from './router/index'
@@ -17,6 +18,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(VueRouter)
+Vue.use(Vuelidate)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 /**
